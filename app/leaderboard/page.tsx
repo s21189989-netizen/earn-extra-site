@@ -65,8 +65,8 @@ export default function LeaderboardPage() {
         <Link href="/" className="flex-1 bg-[#1a1f2e] text-white flex justify-center items-center py-2.5 md:py-3 rounded-xl font-bold text-[10px] md:text-sm hover:bg-black transition-colors shadow-md">
           <ArrowLeft size={14} className="mr-1.5"/> BACK TO HOME
         </Link>
-        {/* Replace the href below with your actual t.me viral link */}
-        <a href="https://t.me/your_viral_link_here" target="_blank" rel="noreferrer" className="flex-1 bg-blue-500 text-white flex justify-center items-center py-2.5 md:py-3 rounded-xl font-bold text-[10px] md:text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-600 transition-colors">
+        {/* Updated Telegram Viral Link Here */}
+        <a href="https://t.me/+q7lYLJwU5RJhZDU9" target="_blank" rel="noreferrer" className="flex-1 bg-blue-500 text-white flex justify-center items-center py-2.5 md:py-3 rounded-xl font-bold text-[10px] md:text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-600 transition-colors">
           <Send size={14} className="mr-1.5"/> Telegram
         </a>
       </div>
