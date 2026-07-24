@@ -41,10 +41,11 @@ export default function EarnExtraHome() {
       
       {/* 1. TOP ACTION BARS */}
       <div className="max-w-5xl mx-auto flex flex-row justify-between items-center gap-3 px-4 py-4 sticky top-0 z-40 bg-slate-50/90 backdrop-blur-md">
-        <a href="https://web.telegram.org/k/#@Extra_earnbot" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-green-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-transform">
+        {/* NEW EARN EXTRA BOT LINK HERE */}
+        <a href="https://t.me/Extra_earnbot" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-green-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-transform">
           <Headset size={20} /> <span className="text-sm md:text-base">24/7 LIVE SUPPORT</span>
         </a>
-        {/* Updated Telegram Viral Link Here */}
+        {/* Telegram Viral Link */}
         <a href="https://t.me/+q7lYLJwU5RJhZDU9" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-blue-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-transform">
           <Send size={20} /> <span className="text-sm md:text-base">Telegram</span>
         </a>
@@ -52,13 +53,10 @@ export default function EarnExtraHome() {
 
       {/* 2. HERO CAROUSEL */}
       <div className="max-w-5xl mx-auto px-4 mt-2">
-        {/* Updated Telegram Viral Link Here */}
         <a 
           href="https://t.me/+q7lYLJwU5RJhZDU9" 
           target="_blank" 
           rel="noreferrer" 
-          // Yahan maine fixed height hata kar aspect-[21/9] laga diya hai
-          // Isse container exactly teri 21:9 images ke size ka banega aur koi white space nahi aayega
           className="block relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-slate-50 group"
         >
           <AnimatePresence mode="popLayout">
@@ -66,9 +64,7 @@ export default function EarnExtraHome() {
               key={currentImg}
               src={heroImages[currentImg]}
               alt="Hero Promo"
-              // Container ab 21:9 ka hai, toh object-cover se image 100% edge-to-edge fit hogi bina kate
               className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-              // Ekdum Unique aur Fast 'Snap & Scale' Animation
               initial={{ opacity: 0, x: 80, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -80, scale: 1.05 }}
@@ -76,7 +72,7 @@ export default function EarnExtraHome() {
             />
           </AnimatePresence>
           
-          {/* Modern Pagination Dots (Active dot thoda lamba/pill shape ka hoga) */}
+          {/* Modern Pagination Dots */}
           <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center gap-1.5 z-10">
             {heroImages.map((_, idx) => (
               <div 
@@ -128,7 +124,6 @@ export default function EarnExtraHome() {
             </div>
 
             <div className="flex justify-between items-center mt-5 gap-2">
-              {/* Stat 1 */}
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">👥</span>
                 <div className="flex flex-col text-left leading-none">
@@ -137,7 +132,6 @@ export default function EarnExtraHome() {
                 </div>
               </div>
               
-              {/* Stat 2 */}
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">🎁</span>
                 <div className="flex flex-col text-left leading-none">
@@ -146,7 +140,6 @@ export default function EarnExtraHome() {
                 </div>
               </div>
 
-              {/* Stat 3 */}
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">📊</span>
                 <div className="flex flex-col text-left leading-none">
@@ -155,7 +148,6 @@ export default function EarnExtraHome() {
                 </div>
               </div>
               
-              {/* CTA Button */}
               <div className={`relative overflow-hidden flex flex-col items-center justify-center py-1.5 rounded-2xl text-white flex-1 shadow-md ${app.ctaColor}`}>
                 <span className="text-[13px] font-extrabold">$ 111</span>
                 <span className="text-[8px] font-bold uppercase opacity-90 leading-none tracking-widest mt-0.5">USDT</span>
@@ -165,23 +157,23 @@ export default function EarnExtraHome() {
           </a>
         ))}
       </div>
-            {/* 5. LIVE LEADERBOARD */}
+      
+      {/* 5. LIVE LEADERBOARD */}
       <div className="max-w-5xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-2xl flex items-center justify-between p-3 pl-5 shadow-sm border border-gray-200 bg-gradient-to-r from-purple-50 to-white">
           <div className="flex items-center gap-4">
             <div className="bg-purple-100 p-2.5 rounded-full shadow-sm"><Trophy size={20} className="text-purple-600" /></div>
             <div>
-              {/* Text ko text-gray-900 kar diya taaki ekdum dark aur clear dikhe */}
               <h4 className="font-black text-gray-900 text-sm md:text-base tracking-wide">LIVE LEADERBOARD</h4>
               <p className="text-xs text-gray-500 font-medium mt-0.5">Check out top earners today & live payouts</p>
             </div>
           </div>
-          {/* Link me /leaderboard add kar diya hai */}
           <Link href="/leaderboard" className="bg-purple-600 hover:bg-purple-700 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
             VIEW NOW →
           </Link>
         </div>
       </div>
+      
       {/* 6. PROMOTIONAL BOTTOM BANNER */}
       <div className="max-w-5xl mx-auto px-4 mt-4">
         <img src="/bottom-banner.jpg" alt="Earn Extra Promo" className="w-full rounded-2xl shadow-sm object-cover" />
