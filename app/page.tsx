@@ -44,15 +44,17 @@ export default function EarnExtraHome() {
         <a href="https://web.telegram.org/k/#@Extra_earnbot" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-green-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-transform">
           <Headset size={20} /> <span className="text-sm md:text-base">24/7 LIVE SUPPORT</span>
         </a>
-        <a href="https://web.telegram.org/k/#-3768378241" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-blue-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-transform">
+        {/* Updated Telegram Viral Link Here */}
+        <a href="https://t.me/+q7lYLJwU5RJhZDU9" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-blue-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-transform">
           <Send size={20} /> <span className="text-sm md:text-base">Telegram</span>
         </a>
       </div>
 
       {/* 2. HERO CAROUSEL */}
       <div className="max-w-5xl mx-auto px-4 mt-2">
+        {/* Updated Telegram Viral Link Here */}
         <a 
-          href="https://web.telegram.org/k/#-3768378241" 
+          href="https://t.me/+q7lYLJwU5RJhZDU9" 
           target="_blank" 
           rel="noreferrer" 
           // Yahan maine fixed height hata kar aspect-[21/9] laga diya hai
