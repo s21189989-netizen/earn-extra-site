@@ -11,18 +11,17 @@ export default function EarnExtraHome() {
 
   const heroImages = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];
 
- // App Data with specific icons, themes and new cardBg property
+ // App Data with High Deposit badge only on first two apps
   const apps = [
     { id: 1, name: 'DIWAPAY', icon: '/icon1.png', tag: 'NO1 EARNING APPS', code: 'IEDLgx', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://install.diwapwork.net/#/?invite=IEDLgx', pillColor: 'bg-green-100 text-green-700', ctaColor: 'bg-green-500', cardBg: 'bg-green-50' },
     { id: 2, name: 'WeCoin PAY', icon: '/icon2.png', tag: 'NO2 EARNING APPS', code: 'aK5hh3', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://install.wecoin.top/#/?invite=aK5hh3', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-500', cardBg: 'bg-blue-50' },
-    { id: 3, name: 'UNOPAY', icon: '/icon3.png', tag: 'NO3 EARNING APPS', code: 'NHb8fO', badges: ['📈 TRENDING', '💳 HIGH DEPOSIT'], link: 'https://omnicloud-down.com/#/?invite=NHb8fO', pillColor: 'bg-red-100 text-red-700', ctaColor: 'bg-red-500', cardBg: 'bg-red-50' },
-    { id: 4, name: 'DD PAY', icon: '/icon4.png', tag: 'NO4 EARNING APPS', code: 't5dG89', badges: ['📈 TRENDING', '💳 HIGH DEPOSIT'], link: 'https://dd-pay.net/#/?invite=t5dG89', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-500', cardBg: 'bg-pink-50' },
-    { id: 5, name: 'ALPHAPAY', icon: '/icon5.png', tag: 'NO5 EARNING APPS', code: 'uxggQJ', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://alphad.net/#/?invite=uxggQJ', pillColor: 'bg-purple-100 text-purple-700', ctaColor: 'bg-purple-600', cardBg: 'bg-purple-50' },
-    { id: 6, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO6 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING', '💳 HIGH DEPOSIT'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
-    { id: 7, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO7 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50' },
-    { id: 8, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO8 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA', '💳 HIGH DEPOSIT'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50' },
+    { id: 3, name: 'UNOPAY', icon: '/icon3.png', tag: 'NO3 EARNING APPS', code: 'NHb8fO', badges: ['📈 TRENDING'], link: 'https://omnicloud-down.com/#/?invite=NHb8fO', pillColor: 'bg-red-100 text-red-700', ctaColor: 'bg-red-500', cardBg: 'bg-red-50' },
+    { id: 4, name: 'DD PAY', icon: '/icon4.png', tag: 'NO4 EARNING APPS', code: 't5dG89', badges: ['📈 TRENDING'], link: 'https://dd-pay.net/#/?invite=t5dG89', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-500', cardBg: 'bg-pink-50' },
+    { id: 5, name: 'ALPHAPAY', icon: '/icon5.png', tag: 'NO5 EARNING APPS', code: 'uxggQJ', badges: ['🔥 VIRAL'], link: 'https://alphad.net/#/?invite=uxggQJ', pillColor: 'bg-purple-100 text-purple-700', ctaColor: 'bg-purple-600', cardBg: 'bg-purple-50' },
+    { id: 6, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO6 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
+    { id: 7, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO7 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50' },
+    { id: 8, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO8 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50' },
   ];
-
   useEffect(() => {
     // Dynamic Date Calculation (Yesterday)
     const yesterday = new Date();
@@ -95,10 +94,9 @@ export default function EarnExtraHome() {
         </span>
       </div>
 
-     {/* 4. DASHBOARD GRID */}
+    {/* 4. DASHBOARD GRID */}
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 px-4 mt-4">
         {apps.map((app) => (
-          // Pura card ab ek clickable link (<a> tag) ban gaya hai
           <a 
             key={app.id} 
             href={app.link} 
@@ -110,7 +108,6 @@ export default function EarnExtraHome() {
               <div className="flex gap-3 items-center">
                 <img src={app.icon} alt={app.name} className="w-14 h-14 object-contain drop-shadow-sm" />
                 <div>
-                  {/* Text ko explicitly text-gray-900 kiya hai taaki dark mode me white na ho */}
                   <h3 className="font-extrabold text-lg text-gray-900 tracking-tight">{app.name}</h3>
                   <div className="flex items-center gap-1 text-xs text-gray-500 font-medium">
                     Register Code - <span className="font-bold text-gray-700">{app.code}</span> <Copy size={12} className="cursor-pointer" />
@@ -119,8 +116,12 @@ export default function EarnExtraHome() {
                 </div>
               </div>
               <div className="flex flex-col gap-1 items-end">
-                <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 tracking-wide">{app.badges[0]}</span>
-                <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-gray-900 text-white tracking-wide">{app.badges[1]}</span>
+                {app.badges[0] && (
+                  <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 tracking-wide">{app.badges[0]}</span>
+                )}
+                {app.badges[1] && (
+                  <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-gray-900 text-white tracking-wide">{app.badges[1]}</span>
+                )}
               </div>
             </div>
 
@@ -152,7 +153,7 @@ export default function EarnExtraHome() {
                 </div>
               </div>
               
-              {/* Shimmer CTA Button ($111 USDT) */}
+              {/* CTA Button */}
               <div className={`relative overflow-hidden flex flex-col items-center justify-center py-1.5 rounded-2xl text-white flex-1 shadow-md ${app.ctaColor}`}>
                 <span className="text-[13px] font-extrabold">$ 111</span>
                 <span className="text-[8px] font-bold uppercase opacity-90 leading-none tracking-widest mt-0.5">USDT</span>
@@ -162,7 +163,7 @@ export default function EarnExtraHome() {
           </a>
         ))}
       </div>
-      {/* 5. LIVE LEADERBOARD */}
+            {/* 5. LIVE LEADERBOARD */}
       <div className="max-w-5xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-2xl flex items-center justify-between p-3 pl-5 shadow-sm border border-gray-200 bg-gradient-to-r from-purple-50 to-white">
           <div className="flex items-center gap-4">
