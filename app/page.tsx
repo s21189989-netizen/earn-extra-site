@@ -11,18 +11,18 @@ export default function EarnExtraHome() {
 
   const heroImages = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];
 
-  // App Data with new WY WALLET and JPG Pay added at the bottom
+  // App Data with reordered positions (WY WALLET at #2, JPG Pay at #3) and updated Tags
   const apps = [
-    { id: 1, name: 'DIWAPAY', icon: '/icon1.png', tag: 'NO1 EARNING APPS', code: 'IEDLgx', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://install.diwapwork.net/#/?invite=IEDLgx', pillColor: 'bg-green-100 text-green-700', ctaColor: 'bg-green-500', cardBg: 'bg-green-50' },
-    { id: 2, name: 'WeCoin PAY', icon: '/icon2.png', tag: 'NO2 EARNING APPS', code: 'aK5hh3', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://install.wecoin.top/#/?invite=aK5hh3', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-500', cardBg: 'bg-blue-50' },
-    { id: 3, name: 'UNOPAY', icon: '/icon3.png', tag: 'NO3 EARNING APPS', code: 'NHb8fO', badges: ['📈 TRENDING'], link: 'https://omnicloud-down.com/#/?invite=NHb8fO', pillColor: 'bg-red-100 text-red-700', ctaColor: 'bg-red-500', cardBg: 'bg-red-50' },
-    { id: 4, name: 'DD PAY', icon: '/icon4.png', tag: 'NO4 EARNING APPS', code: 't5dG89', badges: ['📈 TRENDING'], link: 'https://dd-pay.net/#/?invite=t5dG89', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-500', cardBg: 'bg-pink-50' },
-    { id: 5, name: 'ALPHAPAY', icon: '/icon5.png', tag: 'NO5 EARNING APPS', code: 'uxggQJ', badges: ['🔥 VIRAL'], link: 'https://alphad.net/#/?invite=uxggQJ', pillColor: 'bg-purple-100 text-purple-700', ctaColor: 'bg-purple-600', cardBg: 'bg-purple-50' },
-    { id: 6, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO6 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
-    { id: 7, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO7 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50' },
-    { id: 8, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO8 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50' },
-    { id: 9, name: 'WY WALLET', icon: '/icon10.png', tag: 'NO9 EARNING APPS', code: 'tRtgDa', badges: ['✨ NEW'], link: 'https://wy3721.com/#/?invite=tRtgDa', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
-    { id: 10, name: 'JPG Pay', icon: '/icon9.png', tag: 'NO10 EARNING APPS', code: 'XwKBQA', badges: ['✨ NEW', '⭐ LOW INVEST'], link: 'https://jpgpay.app/#/?invite=XwKBQA', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-600', cardBg: 'bg-pink-50' }
+    { id: 1, name: 'DIWAPAY', icon: '/icon1.png', tag: 'NO1 EARNING APPS', code: 'IEDLgx', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://install.diwapwork.net/#/?invite=IEDLgx', pillColor: 'bg-green-100 text-green-700', ctaColor: 'bg-green-500', cardBg: 'bg-green-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 2, name: 'WY WALLET', icon: '/icon10.png', tag: 'NO2 EARNING APPS', code: 'tRtgDa', badges: ['✨ NEW'], link: 'https://wy3721.com/#/?invite=tRtgDa', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50', signup: '250', xtra: '1800', commission: '5%', usdt: '110' },
+    { id: 3, name: 'JPG Pay', icon: '/icon9.png', tag: 'NO3 EARNING APPS', code: 'XwKBQA', badges: ['✨ NEW', '⭐ LOW INVEST'], link: 'https://jpgpay.app/#/?invite=XwKBQA', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-600', cardBg: 'bg-pink-50', signup: '180', xtra: '1030', commission: '4.5%', usdt: '109' },
+    { id: 4, name: 'WeCoin PAY', icon: '/icon2.png', tag: 'NO4 EARNING APPS', code: 'aK5hh3', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://install.wecoin.top/#/?invite=aK5hh3', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-500', cardBg: 'bg-blue-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 5, name: 'UNOPAY', icon: '/icon3.png', tag: 'NO5 EARNING APPS', code: 'NHb8fO', badges: ['📈 TRENDING'], link: 'https://omnicloud-down.com/#/?invite=NHb8fO', pillColor: 'bg-red-100 text-red-700', ctaColor: 'bg-red-500', cardBg: 'bg-red-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 6, name: 'DD PAY', icon: '/icon4.png', tag: 'NO6 EARNING APPS', code: 't5dG89', badges: ['📈 TRENDING'], link: 'https://dd-pay.net/#/?invite=t5dG89', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-500', cardBg: 'bg-pink-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 7, name: 'ALPHAPAY', icon: '/icon5.png', tag: 'NO7 EARNING APPS', code: 'uxggQJ', badges: ['🔥 VIRAL'], link: 'https://alphad.net/#/?invite=uxggQJ', pillColor: 'bg-purple-100 text-purple-700', ctaColor: 'bg-purple-600', cardBg: 'bg-purple-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 8, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO8 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 9, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO9 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
+    { id: 10, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO10 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' }
   ];
 
   useEffect(() => {
@@ -130,7 +130,7 @@ export default function EarnExtraHome() {
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">👥</span>
                 <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">100+</span>
+                  <span className="text-[11px] font-extrabold">{app.signup}</span>
                   <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">Signup</span>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function EarnExtraHome() {
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">🎁</span>
                 <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">316</span>
+                  <span className="text-[11px] font-extrabold">{app.xtra}</span>
                   <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">Xtra</span>
                 </div>
               </div>
@@ -146,13 +146,13 @@ export default function EarnExtraHome() {
               <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
                 <span className="text-base">📊</span>
                 <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">4%</span>
+                  <span className="text-[11px] font-extrabold">{app.commission}</span>
                   <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">INR</span>
                 </div>
               </div>
               
               <div className={`relative overflow-hidden flex flex-col items-center justify-center py-1.5 rounded-2xl text-white flex-1 shadow-md ${app.ctaColor}`}>
-                <span className="text-[13px] font-extrabold">$ 111</span>
+                <span className="text-[13px] font-extrabold">$ {app.usdt}</span>
                 <span className="text-[8px] font-bold uppercase opacity-90 leading-none tracking-widest mt-0.5">USDT</span>
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
               </div>
