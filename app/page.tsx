@@ -11,7 +11,7 @@ export default function EarnExtraHome() {
 
   const heroImages = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];
 
- // App Data with High Deposit badge only on first two apps
+  // App Data with new WY WALLET and JPG Pay added at the bottom
   const apps = [
     { id: 1, name: 'DIWAPAY', icon: '/icon1.png', tag: 'NO1 EARNING APPS', code: 'IEDLgx', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://install.diwapwork.net/#/?invite=IEDLgx', pillColor: 'bg-green-100 text-green-700', ctaColor: 'bg-green-500', cardBg: 'bg-green-50' },
     { id: 2, name: 'WeCoin PAY', icon: '/icon2.png', tag: 'NO2 EARNING APPS', code: 'aK5hh3', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://install.wecoin.top/#/?invite=aK5hh3', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-500', cardBg: 'bg-blue-50' },
@@ -21,7 +21,10 @@ export default function EarnExtraHome() {
     { id: 6, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO6 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
     { id: 7, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO7 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50' },
     { id: 8, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO8 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50' },
+    { id: 9, name: 'WY WALLET', icon: '/icon10.png', tag: 'NO9 EARNING APPS', code: 'tRtgDa', badges: ['✨ NEW'], link: 'https://wy3721.com/#/?invite=tRtgDa', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50' },
+    { id: 10, name: 'JPG Pay', icon: '/icon9.png', tag: 'NO10 EARNING APPS', code: 'XwKBQA', badges: ['✨ NEW', '⭐ LOW INVEST'], link: 'https://jpgpay.app/#/?invite=XwKBQA', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-600', cardBg: 'bg-pink-50' }
   ];
+
   useEffect(() => {
     // Dynamic Date Calculation (Yesterday)
     const yesterday = new Date();
