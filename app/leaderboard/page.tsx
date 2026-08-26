@@ -1,214 +1,202 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Headset, Send, Trophy, Copy, PlayCircle, X } from 'lucide-react';
+import { ArrowLeft, Send, Trophy, Medal, Zap, Crown } from 'lucide-react';
 
-export default function EarnExtraHome() {
-  const [dateText, setDateText] = useState('');
-  const [currentImg, setCurrentImg] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+export default function LeaderboardPage() {
+  const [activeTab, setActiveTab] = useState('today');
 
-  const heroImages = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];
+  // Realistic Data for different tabs
+  const tabData: any = {
+    today: {
+      top3: [
+        { name: "sunil_patel.99", initials: "SP", amount: "₹54.20L", app: "WeCoin", appColor: "text-blue-500 bg-blue-50" },
+        { name: "sneha_deshmukh", initials: "SD", amount: "₹57.60L", app: "Diwa Pay", appColor: "text-green-600 bg-green-50" },
+        { name: "priyanshu_saini", initials: "PS", amount: "₹51.80L", app: "Uno Pay", appColor: "text-red-500 bg-red-50" }
+      ],
+      list: [
+        { rank: 4, name: "deepak_meena_07", init: "DM", amount: "₹32,606", app: "Diwa Pay", color: "bg-purple-500" },
+        { rank: 5, name: "tarun_sharma_real", init: "TS", amount: "₹28,865", app: "WeCoin", color: "bg-orange-400" },
+        { rank: 6, name: "rahul_sharma_99", init: "RS", amount: "₹24,190", app: "SUPERMONEY", color: "bg-blue-600" },
+        { rank: 7, name: "priyanka_patel", init: "PP", amount: "₹21,850", app: "Kotak811", color: "bg-red-600" }
+      ]
+    },
+    weekly: {
+      top3: [
+        { name: "vikas_kumar_x", initials: "VK", amount: "₹3.20 Cr", app: "Diwa Pay", appColor: "text-green-600 bg-green-50" },
+        { name: "neha_sharma22", initials: "NS", amount: "₹4.15 Cr", app: "WeCoin", appColor: "text-blue-500 bg-blue-50" },
+        { name: "rohit_singh_9", initials: "RS", amount: "₹2.95 Cr", app: "Link Pay", appColor: "text-indigo-500 bg-indigo-50" }
+      ],
+      list: [
+        { rank: 4, name: "amit_patel_pro", init: "AP", amount: "₹95,420", app: "Uno Pay", color: "bg-pink-500" },
+        { rank: 5, name: "pooja_verma", init: "PV", amount: "₹88,150", app: "Diwa Pay", color: "bg-green-500" },
+        { rank: 6, name: "karan_johar_k", init: "KJ", amount: "₹76,900", app: "WeCoin", color: "bg-blue-500" },
+        { rank: 7, name: "sneha_gupta", init: "SG", amount: "₹65,200", app: "Wynn Pay", color: "bg-purple-500" }
+      ]
+    },
+    hall: {
+      top3: [
+        { name: "arjun_reddy_1", initials: "AR", amount: "₹12.4 Cr", app: "WeCoin", appColor: "text-blue-500 bg-blue-50" },
+        { name: "THE_KING_MAKER", initials: "TK", amount: "₹18.5 Cr", app: "Diwa Pay", appColor: "text-green-600 bg-green-50" },
+        { name: "priya_queen", initials: "PQ", amount: "₹10.8 Cr", app: "SuperMoney", appColor: "text-purple-600 bg-purple-50" }
+      ],
+      list: [
+        { rank: 4, name: "rahul_boss_01", init: "RB", amount: "₹8.2 Cr", app: "Diwa Pay", color: "bg-yellow-500" },
+        { rank: 5, name: "smriti_singh", init: "SS", amount: "₹7.5 Cr", app: "Kotak811", color: "bg-red-500" },
+        { rank: 6, name: "ankit_hacker", init: "AH", amount: "₹6.1 Cr", app: "Link Pay", color: "bg-gray-800" },
+        { rank: 7, name: "divya_sharma", init: "DS", amount: "₹5.4 Cr", app: "Uno Pay", color: "bg-pink-600" }
+      ]
+    }
+  };
 
-  // App Data with dynamic values for commission, signup, xtra, and usdt
-  const apps = [
-    { id: 1, name: 'DIWAPAY', icon: '/icon1.png', tag: 'NO1 EARNING APPS', code: 'IEDLgx', badges: ['🔥 VIRAL', '💳 HIGH DEPOSIT'], link: 'https://install.diwapwork.net/#/?invite=IEDLgx', pillColor: 'bg-green-100 text-green-700', ctaColor: 'bg-green-500', cardBg: 'bg-green-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 2, name: 'WeCoin PAY', icon: '/icon2.png', tag: 'NO2 EARNING APPS', code: 'aK5hh3', badges: ['🚀 FASTEST', '💳 HIGH DEPOSIT'], link: 'https://install.wecoin.top/#/?invite=aK5hh3', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-500', cardBg: 'bg-blue-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 3, name: 'UNOPAY', icon: '/icon3.png', tag: 'NO3 EARNING APPS', code: 'NHb8fO', badges: ['📈 TRENDING'], link: 'https://omnicloud-down.com/#/?invite=NHb8fO', pillColor: 'bg-red-100 text-red-700', ctaColor: 'bg-red-500', cardBg: 'bg-red-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 4, name: 'DD PAY', icon: '/icon4.png', tag: 'NO4 EARNING APPS', code: 't5dG89', badges: ['📈 TRENDING'], link: 'https://dd-pay.net/#/?invite=t5dG89', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-500', cardBg: 'bg-pink-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 5, name: 'ALPHAPAY', icon: '/icon5.png', tag: 'NO5 EARNING APPS', code: 'uxggQJ', badges: ['🔥 VIRAL'], link: 'https://alphad.net/#/?invite=uxggQJ', pillColor: 'bg-purple-100 text-purple-700', ctaColor: 'bg-purple-600', cardBg: 'bg-purple-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 6, name: 'SHAKTIPAY', icon: '/icon6.png', tag: 'NO6 EARNING APPS', code: 'wroH9r', badges: ['📈 TRENDING'], link: 'https://shaktipay.app/#/?invite=wroH9r', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 7, name: 'LINK PAY', icon: '/icon7.png', tag: 'NO7 EARNING APPS', code: 'UczQ6s', badges: ['🚀 FASTEST'], link: 'https://mobile.linkpulsex.com/#/pages/auth/register?invite=UczQ6s', pillColor: 'bg-blue-100 text-blue-700', ctaColor: 'bg-blue-600', cardBg: 'bg-blue-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 8, name: 'WYNN PAY', icon: '/icon8.png', tag: 'NO8 EARNING APPS', code: 'mAanAT', badges: ['✨ BETA'], link: 'https://wynnpay.io/#/?invite=#/?invite=mAanAT', pillColor: 'bg-indigo-100 text-indigo-700', ctaColor: 'bg-indigo-500', cardBg: 'bg-indigo-50', signup: '100+', xtra: '316', commission: '4%', usdt: '111' },
-    { id: 9, name: 'WY WALLET', icon: '/icon10.png', tag: 'NO9 EARNING APPS', code: 'tRtgDa', badges: ['✨ NEW'], link: 'https://wy3721.com/#/?invite=tRtgDa', pillColor: 'bg-orange-100 text-orange-700', ctaColor: 'bg-orange-500', cardBg: 'bg-orange-50', signup: '250', xtra: '1800', commission: '5%', usdt: '110' },
-    { id: 10, name: 'JPG Pay', icon: '/icon9.png', tag: 'NO10 EARNING APPS', code: 'XwKBQA', badges: ['✨ NEW', '⭐ LOW INVEST'], link: 'https://jpgpay.app/#/?invite=XwKBQA', pillColor: 'bg-pink-100 text-pink-700', ctaColor: 'bg-pink-600', cardBg: 'bg-pink-50', signup: '180', xtra: '1030', commission: '4.5%', usdt: '109' }
-  ];
-
-  useEffect(() => {
-    // Dynamic Date Calculation (Yesterday)
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' };
-    setDateText(yesterday.toLocaleDateString('en-GB', options).toUpperCase().replace(' ', '-'));
-
-    // Hero Carousel Auto-play
-    const timer = setInterval(() => {
-      setCurrentImg((prev) => (prev + 1) % heroImages.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [heroImages.length]);
+  const currentData = tabData[activeTab];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans pb-10">
-      
-      {/* 1. TOP ACTION BARS */}
-      <div className="max-w-5xl mx-auto flex flex-row justify-between items-center gap-3 px-4 py-4 sticky top-0 z-40 bg-slate-50/90 backdrop-blur-md">
-        {/* NEW EARN EXTRA BOT LINK HERE */}
-        <a href="https://t.me/Extra_earnbot" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-green-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-transform">
-          <Headset size={20} /> <span className="text-sm md:text-base">24/7 LIVE SUPPORT</span>
-        </a>
-        {/* Telegram Viral Link */}
-        <a href="https://t.me/+q7lYLJwU5RJhZDU9" target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-blue-500 text-white font-bold py-3 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-transform">
-          <Send size={20} /> <span className="text-sm md:text-base">Telegram</span>
+    // overflow-x-hidden added to prevent horizontal scroll on mobile
+    <div className="min-h-screen bg-[#f8f9fa] font-sans pb-10 relative overflow-x-hidden">
+      {/* Background Dots Pattern */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .dot-bg { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px; }
+      `}} />
+      <div className="absolute inset-0 dot-bg pointer-events-none -z-10" />
+
+      {/* Top Nav Buttons */}
+      <div className="max-w-4xl mx-auto flex gap-3 px-3 py-4">
+        <Link href="/" className="flex-1 bg-[#1a1f2e] text-white flex justify-center items-center py-2.5 md:py-3 rounded-xl font-bold text-[10px] md:text-sm hover:bg-black transition-colors shadow-md">
+          <ArrowLeft size={14} className="mr-1.5"/> BACK TO HOME
+        </Link>
+        {/* Updated Telegram Viral Link Here */}
+        <a href="https://t.me/+q7lYLJwU5RJhZDU9" target="_blank" rel="noreferrer" className="flex-1 bg-blue-500 text-white flex justify-center items-center py-2.5 md:py-3 rounded-xl font-bold text-[10px] md:text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-600 transition-colors">
+          <Send size={14} className="mr-1.5"/> Telegram
         </a>
       </div>
 
-      {/* 2. HERO CAROUSEL */}
-      <div className="max-w-5xl mx-auto px-4 mt-2">
-        <a 
-          href="https://t.me/+q7lYLJwU5RJhZDU9" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="block relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-slate-50 group"
-        >
-          <AnimatePresence mode="popLayout">
-            <motion.img
-              key={currentImg}
-              src={heroImages[currentImg]}
-              alt="Hero Promo"
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-              initial={{ opacity: 0, x: 80, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -80, scale: 1.05 }}
-              transition={{ duration: 0.35, type: "spring", stiffness: 250, damping: 25 }}
-            />
-          </AnimatePresence>
-          
-          {/* Modern Pagination Dots */}
-          <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center gap-1.5 z-10">
-            {heroImages.map((_, idx) => (
-              <div 
-                key={idx} 
-                className={`h-1.5 rounded-full shadow-sm transition-all duration-300 ease-in-out ${
-                  idx === currentImg ? 'w-5 bg-white' : 'w-1.5 bg-white/60'
-                }`} 
-              />
+      {/* Hall of Champions Banner */}
+      <div className="max-w-4xl mx-auto px-3 mt-1">
+        <div className="bg-[#1e1b2e] rounded-2xl md:rounded-3xl p-5 md:p-8 text-white shadow-xl relative overflow-hidden">
+          <div className="inline-block bg-orange-500 text-white text-[8px] md:text-[10px] font-extrabold px-2.5 py-1 rounded-full mb-2 md:mb-3 uppercase tracking-wider shadow-sm">
+            ⭐ Winner Result Announced
+          </div>
+          <h1 className="text-xl md:text-3xl font-black mb-1 flex items-center gap-1.5 md:gap-2"><Trophy className="text-yellow-400 w-5 h-5 md:w-8 md:h-8"/> HALL OF CHAMPIONS</h1>
+          <p className="text-gray-400 text-[10px] md:text-sm mb-6">Official Daily Leaderboard & Instant Payout Standings</p>
+
+          <div className="flex justify-between items-center border-t border-white/10 pt-3 md:pt-4">
+            <div>
+              <div className="text-yellow-400 font-black text-sm md:text-xl">₹1.65 Cr+</div>
+              <div className="text-[7px] md:text-[9px] text-gray-500 uppercase tracking-widest font-bold">Paid Today</div>
+            </div>
+            <div className="text-center">
+              <div className="text-green-400 font-black text-sm md:text-xl flex items-center gap-1 justify-center">
+                <div className="w-1.5 h-1.5 md:w-2 h-2 bg-green-500 rounded-full animate-pulse"/> 48,920+
+              </div>
+              <div className="text-[7px] md:text-[9px] text-gray-500 uppercase tracking-widest font-bold">Active Winners</div>
+            </div>
+            <div className="text-right">
+              <div className="text-blue-400 font-black text-sm md:text-xl">8:00 AM</div>
+              <div className="text-[7px] md:text-[9px] text-gray-500 uppercase tracking-widest font-bold">Next Reset</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="max-w-4xl mx-auto px-3 mt-5">
+        <div className="flex bg-white rounded-full p-1 shadow-sm border border-gray-200">
+          <button onClick={() => setActiveTab('today')} className={`flex-1 py-2 text-[10px] md:text-sm font-bold rounded-full transition-all flex justify-center items-center gap-1 ${activeTab === 'today' ? 'bg-gray-100 text-gray-900 shadow-sm' : 'text-gray-400'}`}>
+            🔥 TODAY
+          </button>
+          <button onClick={() => setActiveTab('weekly')} className={`flex-1 py-2 text-[10px] md:text-sm font-bold rounded-full transition-all flex justify-center items-center gap-1 ${activeTab === 'weekly' ? 'bg-gray-100 text-gray-900 shadow-sm' : 'text-gray-400'}`}>
+            ⭐ WEEKLY
+          </button>
+          <button onClick={() => setActiveTab('hall')} className={`flex-1 py-2 text-[10px] md:text-sm font-bold rounded-full transition-all flex justify-center items-center gap-1 ${activeTab === 'hall' ? 'bg-gray-100 text-gray-900 shadow-sm' : 'text-gray-400'}`}>
+            👑 ALL TIME
+          </button>
+        </div>
+      </div>
+
+      {/* Top 3 Podium Boxes */}
+      <div className="max-w-4xl mx-auto px-2 mt-12 md:mt-20 flex justify-center items-end gap-1.5 md:gap-6 relative">
+        {/* 2nd Place (Silver) */}
+        <div className="bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl w-[31%] pb-3 md:pb-4 pt-8 md:pt-10 relative flex flex-col items-center shadow-lg mb-2 md:mb-4">
+          <div className="absolute -top-6 md:-top-8 bg-slate-100 border-2 md:border-4 border-white w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center font-black text-slate-400 text-sm md:text-xl shadow-inner">{currentData.top3[0].initials}</div>
+          <div className="absolute -top-9 md:-top-12 bg-slate-300 text-white text-[6px] md:text-[9px] font-bold px-1.5 md:px-2 py-0.5 rounded-full flex items-center gap-0.5 whitespace-nowrap"><Medal size={8}/> 2nd RUNNER UP</div>
+          <p className="font-extrabold text-gray-900 text-[9px] md:text-sm truncate w-[90%] text-center">{currentData.top3[0].name}</p>
+          <div className={`text-[7px] md:text-[9px] font-bold px-1.5 py-0.5 rounded mt-1 mb-2 md:mb-4 ${currentData.top3[0].appColor}`}>{currentData.top3[0].app}</div>
+          <div className="bg-indigo-500 w-[85%] py-1.5 md:py-2 rounded-lg md:rounded-xl text-center text-white">
+            <div className="text-[5px] md:text-[7px] uppercase tracking-wider font-bold opacity-80">Total Earnings</div>
+            <div className="font-black text-[10px] md:text-base">{currentData.top3[0].amount}</div>
+          </div>
+        </div>
+
+        {/* 1st Place (Gold) */}
+        <div className="bg-white border-2 border-yellow-400 rounded-xl md:rounded-2xl w-[35%] pb-3 md:pb-4 pt-10 md:pt-12 relative flex flex-col items-center shadow-2xl z-10 scale-105">
+          <div className="absolute -top-7 md:-top-10 bg-yellow-50 border-2 md:border-4 border-white w-12 h-12 md:w-20 md:h-20 rounded-full flex items-center justify-center font-black text-yellow-500 text-base md:text-3xl shadow-inner">{currentData.top3[1].initials}</div>
+          <div className="absolute -top-11 md:-top-14 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-[7px] md:text-[10px] font-bold px-2 md:px-3 py-0.5 md:py-1 rounded-full flex items-center gap-1 shadow-md whitespace-nowrap"><Crown size={10}/> 1st CHAMPION</div>
+          <p className="font-extrabold text-gray-900 text-[10px] md:text-base truncate w-[90%] text-center">{currentData.top3[1].name}</p>
+          <div className={`text-[8px] md:text-[10px] font-bold px-1.5 py-0.5 rounded mt-1 mb-2 md:mb-4 ${currentData.top3[1].appColor}`}>{currentData.top3[1].app}</div>
+          <div className="bg-yellow-500 w-[85%] py-2 md:py-3 rounded-lg md:rounded-xl text-center text-white shadow-inner">
+            <div className="text-[6px] md:text-[8px] uppercase tracking-wider font-bold opacity-90">Total Earnings</div>
+            <div className="font-black text-[11px] md:text-xl">{currentData.top3[1].amount}</div>
+          </div>
+        </div>
+
+        {/* 3rd Place (Bronze) */}
+        <div className="bg-white border-2 border-orange-200 rounded-xl md:rounded-2xl w-[31%] pb-3 md:pb-4 pt-8 md:pt-10 relative flex flex-col items-center shadow-lg mb-2 md:mb-4">
+          <div className="absolute -top-6 md:-top-8 bg-orange-50 border-2 md:border-4 border-white w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center font-black text-orange-400 text-sm md:text-xl shadow-inner">{currentData.top3[2].initials}</div>
+          <div className="absolute -top-9 md:-top-12 bg-orange-400 text-white text-[6px] md:text-[9px] font-bold px-1.5 md:px-2 py-0.5 rounded-full flex items-center gap-0.5 whitespace-nowrap"><Medal size={8}/> 3rd PLACE</div>
+          <p className="font-extrabold text-gray-900 text-[9px] md:text-sm truncate w-[90%] text-center">{currentData.top3[2].name}</p>
+          <div className={`text-[7px] md:text-[9px] font-bold px-1.5 py-0.5 rounded mt-1 mb-2 md:mb-4 ${currentData.top3[2].appColor}`}>{currentData.top3[2].app}</div>
+          <div className="bg-pink-500 w-[85%] py-1.5 md:py-2 rounded-lg md:rounded-xl text-center text-white">
+            <div className="text-[5px] md:text-[7px] uppercase tracking-wider font-bold opacity-80">Total Earnings</div>
+            <div className="font-black text-[10px] md:text-base">{currentData.top3[2].amount}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* List View (Rank 4+) */}
+      <div className="max-w-4xl mx-auto px-3 mt-6">
+        <div className="bg-white rounded-2xl md:rounded-3xl p-3 md:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 mb-4 md:mb-6">
+            <div className="bg-indigo-50 p-1.5 rounded-lg"><Trophy size={14} className="text-indigo-500"/></div>
+            <h3 className="font-black text-gray-800 text-xs md:text-base uppercase tracking-wide">Leaderboard Standings</h3>
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            {currentData.list.map((item: any, idx: number) => (
+              <div key={idx} className="flex items-center justify-between p-2 md:p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+                  <div className="text-slate-400 font-black text-xs md:text-base w-4 md:w-6">#{item.rank}</div>
+                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full text-white flex shrink-0 items-center justify-center font-bold text-xs md:text-sm ${item.color}`}>{item.init}</div>
+                  <div className="min-w-0 flex-1 pr-2">
+                    <div className="font-bold text-gray-900 text-[10px] md:text-sm flex items-center gap-1 truncate w-full">
+                      <span className="truncate">{item.name}</span> 
+                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-blue-500 text-white rounded-full flex shrink-0 items-center justify-center text-[6px] md:text-[8px]">✓</div>
+                    </div>
+                    <div className="text-[8px] md:text-[9px] font-bold text-gray-600 bg-gray-100 border border-gray-200 px-1.5 py-0.5 rounded mt-0.5 md:mt-1 inline-block">{item.app}</div>
+                  </div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="font-black text-gray-900 text-[11px] md:text-base flex items-center gap-0.5 md:gap-1 justify-end"><span className="text-green-500 text-sm md:text-lg">↗</span> {item.amount}</div>
+                  <div className="text-[7px] md:text-[9px] font-bold text-green-500 mt-0.5">+12.5%</div>
+                </div>
+              </div>
             ))}
           </div>
-        </a>
-      </div>
-      {/* 3. DYNAMIC DATE BADGE */}
-      <div className="max-w-5xl mx-auto flex justify-end px-4 mt-3">
-        <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-          🔴 UPDATED {dateText}
-        </span>
-      </div>
-
-    {/* 4. DASHBOARD GRID */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 px-4 mt-4">
-        {apps.map((app) => (
-          <a 
-            key={app.id} 
-            href={app.link} 
-            target="_blank" 
-            rel="noreferrer" 
-            className={`block rounded-[2rem] p-4 shadow-sm border border-white/50 transition-transform hover:-translate-y-1 cursor-pointer ${app.cardBg}`}
-          >
-            <div className="flex justify-between items-start">
-              <div className="flex gap-3 items-center">
-                <img src={app.icon} alt={app.name} className="w-14 h-14 object-contain drop-shadow-sm" />
-                <div>
-                  <h3 className="font-extrabold text-lg text-gray-900 tracking-tight">{app.name}</h3>
-                  <div className="flex items-center gap-1 text-xs text-gray-500 font-medium">
-                    Register Code - <span className="font-bold text-gray-700">{app.code}</span> <Copy size={12} className="cursor-pointer" />
-                  </div>
-                  <p className={`text-[10px] font-extrabold mt-0.5 ${app.pillColor.split(' ')[1]}`}>{app.tag}</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-1 items-end">
-                {app.badges[0] && (
-                  <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 tracking-wide">{app.badges[0]}</span>
-                )}
-                {app.badges[1] && (
-                  <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-gray-900 text-white tracking-wide">{app.badges[1]}</span>
-                )}
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center mt-5 gap-2">
-              <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
-                <span className="text-base">👥</span>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">{app.signup}</span>
-                  <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">Signup</span>
-                </div>
-              </div>
-              
-              <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
-                <span className="text-base">🎁</span>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">{app.xtra}</span>
-                  <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">Xtra</span>
-                </div>
-              </div>
-
-              <div className={`flex items-center justify-center gap-1.5 p-2 rounded-2xl flex-1 ${app.pillColor}`}>
-                <span className="text-base">📊</span>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[11px] font-extrabold">{app.commission}</span>
-                  <span className="text-[7px] font-bold uppercase opacity-80 mt-0.5 tracking-wider">INR</span>
-                </div>
-              </div>
-              
-              <div className={`relative overflow-hidden flex flex-col items-center justify-center py-1.5 rounded-2xl text-white flex-1 shadow-md ${app.ctaColor}`}>
-                <span className="text-[13px] font-extrabold">$ {app.usdt}</span>
-                <span className="text-[8px] font-bold uppercase opacity-90 leading-none tracking-widest mt-0.5">USDT</span>
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-      
-      {/* 5. LIVE LEADERBOARD */}
-      <div className="max-w-5xl mx-auto px-4 mt-6">
-        <div className="bg-white rounded-2xl flex items-center justify-between p-3 pl-5 shadow-sm border border-gray-200 bg-gradient-to-r from-purple-50 to-white">
-          <div className="flex items-center gap-4">
-            <div className="bg-purple-100 p-2.5 rounded-full shadow-sm"><Trophy size={20} className="text-purple-600" /></div>
-            <div>
-              <h4 className="font-black text-gray-900 text-sm md:text-base tracking-wide">LIVE LEADERBOARD</h4>
-              <p className="text-xs text-gray-500 font-medium mt-0.5">Check out top earners today & live payouts</p>
-            </div>
-          </div>
-          <Link href="/leaderboard" className="bg-purple-600 hover:bg-purple-700 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-            VIEW NOW →
-          </Link>
         </div>
       </div>
-      
-      {/* 6. PROMOTIONAL BOTTOM BANNER */}
-      <div className="max-w-5xl mx-auto px-4 mt-4">
-        <img src="/bottom-banner.jpg" alt="Earn Extra Promo" className="w-full rounded-2xl shadow-sm object-cover" />
-      </div>
 
-      {/* 7. BOTTOM ACTION BUTTONS */}
-      <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4 px-4 mt-6">
-        <a href="https://www.instagram.com/earn_eaxtra?igsh=cXJ5b2RnbXhtZ2pj" target="_blank" rel="noreferrer" className="flex justify-center items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold py-3 rounded-full shadow-md">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Insta" className="w-5 h-5 invert" /> Instagram
-        </a>
-        <button onClick={() => setShowModal(true)} className="flex justify-center items-center gap-2 bg-red-600 text-white font-bold py-3 rounded-full shadow-md hover:bg-red-700">
-          <PlayCircle size={20} /> REMOVE RISK
-        </button>
-      </div>
-
-      {/* 8. FOOTER */}
-      <div className="max-w-5xl mx-auto px-4 mt-8 text-center flex flex-col items-center gap-2">
-        <Link href="/privacy" className="text-xs font-bold text-gray-500 hover:text-gray-800 transition-colors">Privacy & Policy</Link>
-        <p className="text-[10px] text-gray-400">© 2026 Earn Extra. All rights reserved.</p>
-      </div>
-
-      {/* RISK VIDEO MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-gray-700">
-            <button onClick={() => setShowModal(false)} className="absolute top-3 right-3 z-10 bg-white/20 p-2 rounded-full hover:bg-white/40">
-              <X size={20} className="text-white" />
-            </button>
-            <video src="/risk-video.mp4" controls autoPlay className="w-full h-auto max-h-[80vh]" />
+      {/* Live Withdraw Ticker */}
+      <div className="max-w-4xl mx-auto px-3 mt-4">
+        <div className="bg-green-50 border border-green-200 rounded-xl md:rounded-2xl p-3 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2">
+            <div className="bg-green-500 text-white p-1 md:p-1.5 rounded-full"><Zap size={14}/></div>
+            <div className="text-[10px] md:text-sm text-gray-700 font-medium">
+              🎉 <span className="font-bold text-gray-900">tarun_***</span> withdrew <span className="font-bold text-green-600">₹30,172.90</span>
+            </div>
           </div>
+          <div className="bg-green-100 text-green-700 text-[8px] md:text-[10px] font-black px-2 py-1 rounded tracking-widest uppercase animate-pulse">Live</div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
